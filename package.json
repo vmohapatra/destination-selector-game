@@ -1,0 +1,13 @@
+{
+    "name" : "prototype",
+    "description" : "Destination Selector Game Prototype",
+    "version" : "0.7.0",
+    "private" : true,
+    "dependencies" : {
+        "express" : "=3.0.0",
+        "mongoose" : ">=3.6.0",
+        "cheerio" : ">=0.14.0",
+        "request" : ">=2.33.0",
+        "node-uuid" : "=1.4.1"
+    }
+}
