@@ -1,0 +1,263 @@
+/******************************
+ONE COLUMN
+******************************/
+@media screen and (min-width: 100px) {
+    #div_contentContainer {
+        /*padding-top:115px;*/
+    }
+	
+	#div_resultsContentContainer {
+		padding-top:100px;
+		padding-bottom:65px;
+	}
+	
+	#div_footerContainer {
+		width:90px;
+		margin: 0 auto;
+	}
+		
+	#div_destinationBtnContainer {
+		height: 80px;
+		width: 80px;
+		border-radius: 80px;
+	}
+	
+	#div_destBtnBgImgContainer {
+		margin-left: 24px;
+		margin-top: 24px;
+	}
+	
+	#div_hdrRestartGame, #div_hdrLaunchSurvey {	
+		display: none;
+	}
+	
+	#div_resultsFooterContainer {
+		display: block;
+	}
+	
+	#div_destMapBtnContainer, #div_destMapBtnBgImgContainer, #div_destMapBtnText {
+		display: none;
+	}
+		
+	#div_destinationBtnContainer , #div_destBtnBgImgContainer {
+		display: block;
+	}
+}
+
+@media screen and (min-width: 253px) {
+    #div_contentContainer {
+        /*padding-top:80px;*/
+    }
+	
+	#div_resultsContentContainer {
+		padding-top:70px;
+		padding-bottom:65px;
+	}
+	
+
+}
+
+@media screen and (min-width: 462px) {
+    #div_contentContainer {
+        /*padding-top:55px;*/
+    }
+	
+	#div_resultsContentContainer {
+		padding-top: 70px;
+		padding-bottom:65px;
+	}
+	
+
+	
+/* 	#div_footerContainer {
+		width:110px;
+	} */
+	
+/* 	#div_destinationBtnContainer {
+		height: 100px;
+		width: 100px;
+		border-radius: 100px;
+	} */
+	
+/* 	#div_destBtnBgImgContainer {
+		margin-left: 37px;
+		margin-top: 35px;
+	} */
+}
+/******************************
+DESTINATIONS DOUBLE ROW TWEAK
+******************************/
+
+@media screen and (min-width: 500px) {
+  .tags-container {
+    height: 180px;
+  }
+ 
+}
+/******************************
+TWO COLUMNS
+******************************/
+@media screen and (min-width: 600px) {
+    #div_contentContainer {
+    	padding: 0 4%;
+        /*padding-top:51px;*/
+    }
+	
+	#div_footerContainer {		
+		margin: 0px;
+	}
+	
+	#div_resultsContentContainer {
+		padding-top: 72px;
+		padding-bottom:65px;
+	}
+    
+    .col-xs-12, .col-md-4 {
+        width:50%;
+    }
+    
+    .rowpadding {
+      padding: 4% 2% 0 2%;
+    }
+
+	.sticky-header {
+	  font-size: 2.4em;
+	}
+	
+	#hdr_resultsFixed.fixed-header {
+	  width: auto;
+	  text-align: left;
+	  margin-left: -13%;
+	  padding-left: 19px;
+	  font-size: 2.6rem;
+	}
+	
+	.fixed-header {
+	 font-size: 2.2rem;
+	
+	 padding-top: 4px;
+}
+	
+	h3 {
+  	  font-size: 2.6rem;
+	}
+	
+	#p_header {
+	  font-size: 2.6rem;
+	}
+	
+	.bkBtn {
+	  margin-top: 6%;
+	}
+  
+  	#div_hdrRestartGame, #div_hdrLaunchSurvey {	
+	  display: block;
+	}
+	
+	#div_resultsFooterContainer {
+	  display: none;
+	}
+
+	#div_destMapBtnContainer, #div_destMapBtnBgImgContainer, #div_destMapBtnText  {
+	  display: block;
+	}
+	
+	#div_destMapBtnContainer {
+	  background-color: #CCCCCC;
+	  box-shadow: 0 0 0 12px rgba(0,0,0,0.6);
+	}
+	
+	.innerProgress {
+		opacity: 0.6;
+	}
+	
+	#spn_destMapBtnBgImg {
+		margin-top: 97px;
+		margin-left: 219px;
+	}
+	
+	#div_destinationBtnContainer , #div_destBtnBgImgContainer {
+		display: none;
+	}
+}
+/******************************
+DESTINATIONS SINGLE ROW
+******************************/
+@media screen and (min-width: 800px) {
+  .destination-card {
+    height: 200px;
+    margin: 3% 0 3% 0;
+  }
+
+  .title-container {
+    width: 33.333%;
+    float: left;
+  }
+  
+  .map-and-match {
+    position: relative;
+    float: right;
+    overflow: hidden;
+    width: 66.667%;
+    height: 100%;
+  }
+
+  .map-container {
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 200px;
+  }
+  
+  .tags-container {
+    width: 50%;
+    height: 100%;
+    background-color: rgba(240,240,240,0.8);
+  }
+  
+  .tagHdr {
+    font-size: 1.2em;
+  }
+  
+  .bkBtn {
+	margin-top: 6%;
+  }
+}
+/******************************
+THREE COLUMNS
+******************************/
+@media screen and (min-width: 1224px) {
+    #div_contentContainer {
+        padding: 0 2% 0 2%;
+    }
+
+	#div_resultsContentContainer {
+		padding-top: 72px;
+		padding-bottom:65px;
+	}
+    
+    .col-xs-12, .col-md-4 {
+        width:33.33333333333%;
+    }
+    
+    .rowpadding {
+      padding: 2% 1% 0 1%;
+    }
+    
+    .sticky-header {
+	  font-size: 3em;
+	}
+	
+	h3 {
+  	  font-size: 3.2rem;
+	}
+	
+	#p_header {
+	  font-size: 3.2rem;
+}
+	
+	.bkBtn {
+		/* margin: 10px 0px 0px 0px; */
+	
+}
+}
