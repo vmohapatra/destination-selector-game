@@ -1,6 +1,6 @@
 {
     "name" : "prototype",
-    "description" : "Destination Selector Game Prototype",
+    "description" : "Snow White Prototype",
     "version" : "0.7.0",
     "private" : true,
     "dependencies" : {
