@@ -3,6 +3,8 @@
 Instructions to play with this app :
 
 1) Install mongodb and nodejs on your local machine. for instructions to install please go to their resp. websites.
+https://www.mongodb.org
+https://nodejs.org/en/
 
 2) To start mongodb, open cmd.exe and navigate to bin directory under mongodb installation directory and type mongod.exe (mongod on Mac) . This will start mongodb database daemon, databases will be stored in the data directory you have chosen as part of mongodb installation.
 
