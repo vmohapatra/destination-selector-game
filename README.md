@@ -16,7 +16,11 @@ type  mongod.exe --dbpath <path to the data folder>
 4) IMPORTANT - For windows machines, if you are building or deploying for the first time, go to data folder in snow-white project(load script  located at /data/load.bat(sh)) and run load.bat. This will load the setup data necessary for the project into the database.
     NOTE - On Mac you may have to add execution permission to load.sh with the following command: chmod +x load.sh
     The default name of database is prototype
-    
+ 
+ cd snow-white/
+ cd data
+ sh load.sh
+ 
 5) From snow-white project home directory, run npm install command, this will install all the node js dependencies
 
 6) To start the node server go to the snow-white project folder. This folder should contain server.js in it.
