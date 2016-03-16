@@ -32,4 +32,5 @@ type  mongod.exe --dbpath <path to the data folder>
 6) To start the node server go to the snow-white project folder. This folder should contain server.js in it.
 type node server.js <port number>
 
-7) Go to a browser and type http://localhost:<port number> to access the application.
+7) Go to a browser and type http://localhost:[port number] to access the application. 
+[TODO : Include validation when no port is entered]
