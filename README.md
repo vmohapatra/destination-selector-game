@@ -6,6 +6,12 @@ Instructions to play with this app :
 https://www.mongodb.org
 https://nodejs.org/en/
 
+(I recommend installing mongodb from Homebrew on Mac as that is really hassle free.)
+
+https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/
+
+https://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/
+
 2) To start mongodb, open cmd.exe and navigate to bin directory under mongodb installation directory and type mongod.exe (mongod on Mac) . This will start mongodb database daemon, databases will be stored in the data directory you have chosen as part of mongodb installation.
 
 If you want to store databases in a different folder, type the following command. (I recommend this)
