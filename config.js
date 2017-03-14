@@ -1,6 +1,7 @@
 // Parses the environment and port; sets defaults if not provided
 // Also makes a list of images from the file of all images
 
+// https://nodejs.org/api/fs.html
 var fs = require('fs');
 var exec = require('child_process').exec;
 
@@ -16,6 +17,7 @@ config.optimum_img_selection = 6;
 config.num_hotels = 20;
 config.num_reviews = 1000;
 
+// Loads a list of images from the file of all images from the directory and stores in config.images variable
 config.images = fs.readdirSync('./img/images');
 for (var i = 0; i < config.images.length; i++) {
     config.images[i] = '/images/' + config.images[i];
