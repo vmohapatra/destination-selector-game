@@ -19,7 +19,7 @@ type  mongod.exe --dbpath <path to the data folder>
 
 3) Get the latest version (master) of snow-white project from Github.
 
-4) IMPORTANT - If you are building or deploying for the first time :For windows machines, go to data folder in snow-white project(load script  located at /data/load.bat(sh)) and run load.bat. This will load the setup data necessary for the project into the database.
+4) IMPORTANT - For windows machines, if you are building or deploying for the first time, go to data folder in snow-white project(load script  located at /data/load.bat(sh)) and run load.bat. This will load the setup data necessary for the project into the database.
     NOTE - On Mac you may have to add execution permission to load.sh with the following command: chmod +x load.sh
     The default name of database is prototype
  
