@@ -6,6 +6,6 @@ mongo prototype --eval 'db.imagetags.drop()'
 mongo prototype --eval 'db.desttags.drop()'
 mongo prototype --eval 'db.imagelocations.drop()'
 #import from csv files the preloaded tag data
-mongoimport -d prototype -c imagetags --type csv --file imageTags.csv --headerline
-mongoimport -d prototype -c desttags --type csv --file destTags2.csv --headerline
-mongoimport -d prototype -c imagelocations --type csv --file imageLocations.csv --headerline
+mongoimport -d prototype -c imagetags --type csv --file imageTags.csv --headerline --batchSize 100
+mongoimport -d prototype -c desttags --type csv --file destTags2.csv --headerline --batchSize 100
+mongoimport -d prototype -c imagelocations --type csv --file imageLocations.csv --headerline --batchSize 100
