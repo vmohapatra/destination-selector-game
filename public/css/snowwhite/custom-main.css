@@ -18,7 +18,7 @@ HEADER
   right: 0;
   left: 0;
   z-index: 1030;
-  margin-bottom: 0px;	
+  margin-bottom: 0px;
 }
 .sticky-header, .fixed-header {
   line-height: 120%;
@@ -29,17 +29,17 @@ HEADER
   font-size: 1.6em;
   font-family: 'Cinzel', 'serif';
   padding: 12px 0 0 0;
-  color: #FFFFFF;	
+  color: #FFFFFF;
 }
 .fixed-header {
   font-size: 2.2rem;
-  font-family: 'Open Sans', sans-serif;	
+  font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   padding-top: 6px;
   margin-left: -6px;
 }
 #p_header {
-  font-family: 'Open Sans', sans-serif;	
+  font-family: 'Open Sans', sans-serif;
   color: white;
   font-weight: 300;
   font-size: 1.8rem;
@@ -89,7 +89,7 @@ DESTINATION PHOTOS
   	background-position: center;
   	padding-top: 62%;
   	padding-bottom: 5%;
-    
+
 	box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   	cursor: pointer;
 }
@@ -166,7 +166,7 @@ GAME PAGE FOOTER
 	width: 100%;
     overflow: hidden;
     position: absolute;
-    background-color: #FFCB00;   
+    background-color: #FFCB00;
     bottom: 0;
     height: 0%;
     -webkit-transition:height 1s ease-in-out;
@@ -220,7 +220,7 @@ RESULTS PAGE HEADER
 	cursor: pointer;
 }
 #hdr_resultsFixed.fixed-header {
-	color: black;	
+	color: black;
 	opacity: 0.7;
 	width: 158%;
 	text-align: center;
@@ -309,7 +309,7 @@ RESULTS PAGE CONTENT
   margin: 0;
   padding: 0 10px 10px 10px;
   color: black;
-  opacity: 0.7;	
+  opacity: 0.7;
 }
 .wiki {
 	font-size: 0.8em;
@@ -322,7 +322,7 @@ RESULTS PAGE CONTENT
 	line-height: 300%;
 	padding: 20px 0;
 	margin: 20px 0;
-	font-size: 1em;	
+	font-size: 1em;
 	color: white;
 }
 
