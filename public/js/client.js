@@ -26,14 +26,14 @@ get.dests = function (postId, num, callback) {
 			resource: "DESTS",
 			num: num,
 			postId: postId
-		},	
+		},
 		success: callback
 	});
 };
 
-render.images = function (data) {		
+render.images = function (data) {
 		$('#div_loading').show();
-		if(data.images.length > 0 ) {					
+		if(data.images.length > 0 ) {
 			for (var i=0; i < data.images.length; ++i) {
 				var count = lastImgDisplayedNum + i;
 				var imgContent = '<div id="div_'+ count +'" class="rowpadding col-xs-12 col-md-4">' +
@@ -49,7 +49,7 @@ render.images = function (data) {
 		}
         else {
 			$('#div_loading').hide();
-        }		
+        }
 };
 
 render.dests = function (data) {
@@ -60,7 +60,7 @@ render.dests = function (data) {
 			var d = data.dests[i];
 			var div = $('<div id="div_destContainer_'+i+'" class="row destination-card"></div>');
 			var wikitext = '';
-			var style = '';			
+			var style = '';
 			var wikilink = d.name;
 			if(d.info != ' ')
 			{
@@ -69,21 +69,21 @@ render.dests = function (data) {
 				style = ' style="color: #0065B8;"';
 				div.css('cursor', 'pointer');
 				div.attr('onclick', 'window.open(\''+d.url + '\',\'_blank\')');
-				div.attr('target', '_blank');				
+				div.attr('target', '_blank');
 			}
 			else
 			{
 				d.info = 'Description not available';
 			}
-			
-			
+
+
 			var destDetailsContainerDiv = $('<div id="div_destDetails_'+i+'" class="title-container"></div>');
 			destDetailsContainerDiv.append('<h2 id="hdr_dest_'+i+'" class="destDetailHdr"'+style+'>' + wikilink + '</h2>');
 			destDetailsContainerDiv.append('<p id="prg_subTxt_dest_'+i+'" class="destDetailSub">' + d.info +
 											'<span id="spn_wiki_'+i+'" class="wiki">'+wikitext+'</span>' +
 											'</p>');
-			
-			
+
+
 			var shortname = d.name.replace(/ /g, '+');//d.name.replace(/,.*/, '').replace(/ /g, '+');
 			shortname=shortname.replace("'","%27");
 			shortnames[i] = shortname;
@@ -91,7 +91,7 @@ render.dests = function (data) {
 
 			var mapContainerDiv = $('<div id="div_mapContainer_'+i+'" class="map-container"></div>');
 			var mapDiv = $('<div id="div_map_'+i+'" class="map"></div>');
-			
+
 			mapDiv.css('background-image',
 					"url(http://maps.googleapis.com/maps/api/staticmap?center=" +
 					shortname +
@@ -102,14 +102,14 @@ render.dests = function (data) {
 					"&key=AIzaSyCc5pRzrMHn-2iOeAPzzAkJH3J--alkJvg)"
 					);
 			mapContainerDiv.append(mapDiv);
-		
+
 			var tagContainerDiv = $('<div id="div_tagContainer_'+i+'" class="tags-container"></div>');
 			tagContainerDiv.append('<h3 id="hdr_tag_'+i+'" class="tagHdr">Matched for...</h3>');
 			tagContainerDiv.append('<p id="prg_tag_'+i+'" class="tags">'+d.displayTags+'</p>');
-						
+
 			mapAndTagContainerDiv.append(mapContainerDiv);
 			mapAndTagContainerDiv.append(tagContainerDiv);
-						
+
 			div.append(destDetailsContainerDiv);
 			div.append(mapAndTagContainerDiv);
 			$('#div_destinationResultContainer div.content').append(div);
@@ -120,7 +120,7 @@ render.dests = function (data) {
 					"url(http://maps.google.com/maps/api/staticmap?size=470x220&center=25,0&zoom=1" +
 					"&style=feature:water|element:geometry|lightness:-10" +
 					"&style=feature:landscape|element:geometry|lightness:-25" +
-					"&style=element:labels.text|visibility:off" +	
+					"&style=element:labels.text|visibility:off" +
 					"&style=element:geometry|saturation:-100" +
 					"&markers=color:black|" + shortnames[0] +
 					"&markers=color:black|" + shortnames[1] +
@@ -158,21 +158,21 @@ render.dests = function (data) {
 	$('#div_destMapProgressLevel').css("background-color","#FFC300");
 	$('#spn_destBtnBgImg').css("background-image","url(../css/img/dest_marker.png)");
 	$('#spn_destMapBtnBgImg').css("background-image","none");
-	
+
 
 };
 
 
 $(document).ready(function () {
-															
+
 	$(window).on('beforeunload', function() {
 		$(window).scrollTop(0);
 	});
-	
-	window.onhashchange= function(){		
-		if(window.location.hash=='#photos'){				
+
+	window.onhashchange= function(){
+		if(window.location.hash=='#photos'){
 				$('#div_destinationResultContainer').hide();
-			
+
 				$('#div_siteContainer').show();
 				if(gameView.getSelectedImgCount() > 0 ) {
 					$('#spn_destBtnBgImg').css("background-image","url(../css/img/dest_marker.png)");
@@ -181,14 +181,14 @@ $(document).ready(function () {
 				else {
 						$('#div_footerContainer').hide();
 				}
-				$(window).scrollTop(savedPosition);				
+				$(window).scrollTop(savedPosition);
 		}
-		else if(window.location.hash=='#destinations'){	
-				savedPosition = $(window).scrollTop();				
+		else if(window.location.hash=='#destinations'){
+				savedPosition = $(window).scrollTop();
 				$('#div_siteContainer').hide();
 				$('#div_destinationResultContainer').show();
-				$(window).scrollTop(0);				
-		}		
+				$(window).scrollTop(0);
+		}
 	};
 
 	//Store the position of the fixed tagline container
@@ -196,7 +196,7 @@ $(document).ready(function () {
     statusBarPosition = {
         top: fixedStatusBar.position().top
     };
-	
+
 	//Define the scroll behavior
 	//Backbone.js does not support scroll event. hence the scroll event should be defined outside backbone view
 	$(window).bind('scroll', function () {
@@ -208,7 +208,7 @@ $(document).ready(function () {
 			fired = true;
 			get.images(6, render.images);
 		}
-		
+
 		//Code for sticky header in game window
 		if($('#div_siteContainer').is(":visible")) {
 			// document.body.scrollTop is deprecated. Use document.documentElement.scrollTop
@@ -221,7 +221,7 @@ $(document).ready(function () {
 				});
 				$('#div_contentContainer').css({
 					'margin-top': statusBarPosition.top
-				});				
+				});
 			}
 			else if (statusBarPosition.top > document.body.scrollTop && fixedStatusBar.css('position') == 'fixed') {
 				fixedStatusBar.css({
