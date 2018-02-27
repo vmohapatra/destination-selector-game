@@ -211,7 +211,10 @@ $(document).ready(function () {
 		
 		//Code for sticky header in game window
 		if($('#div_siteContainer').is(":visible")) {
-			if (fixedStatusBar.position().top < document.body.scrollTop) {
+			// document.body.scrollTop is deprecated. Use document.documentElement.scrollTop
+			// reference link
+			// https://stackoverflow.com/questions/28633221/document-body-scrolltop-firefox-returns-0-only-js/32011598
+			if (fixedStatusBar.position().top < document.documentElement.scrollTop) {
 				fixedStatusBar.css({
 					position: 'fixed',
 					top: '0px'
