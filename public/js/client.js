@@ -223,7 +223,7 @@ $(document).ready(function () {
 					'margin-top': statusBarPosition.top
 				});
 			}
-			else if (statusBarPosition.top > document.body.scrollTop && fixedStatusBar.css('position') == 'fixed') {
+			else if (statusBarPosition.top > document.documentElement.scrollTop && fixedStatusBar.css('position') == 'fixed') {
 				fixedStatusBar.css({
 					position: 'relative',
 				});
