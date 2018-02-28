@@ -36,7 +36,7 @@ auth.session = function (req, res, callback) {
             else {
                 callback(err, game);
             }
-        });         
+        });
 }
 
 module.exports = auth;

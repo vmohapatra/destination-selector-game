@@ -40,11 +40,12 @@ amalgamateTags = function (images, callback) {
     var count = 0;
     db.ImageTag.find().lean()
     .where('image').in(images)
-    .stream()
+    /* .stream() is deprecated in mongoose v5.0.7 . use .cursor()*/
+    .cursor()
     .on('data', function (doc) {
         for (key in doc) {
-            if (key != '_id' && key != '__v' && key != 'image') {
-                if (vector[key] == undefined) {
+            if (key !== '_id' && key !== '__v' && key !== 'image') {
+                if (vector[key] === undefined) {
                     vector[key] = 0;
                 }
                 vector[key] += doc[key];
@@ -62,13 +63,13 @@ amalgamateTags = function (images, callback) {
         callback(err);
     });
 }
-    
+
 backend.images = function (game, num, callback) {
     // Constant for power in probability-selection
     var EXPONENT = 4;
 
-    
-    if (game.accepted.length == 0 && game.seen.length == 0) {
+
+    if (game.accepted.length === 0 && game.seen.length === 0) {
         var images = util.nRandomElements(startimages, num);
         game.seen = game.seen.concat(images);
         game.save(function (err) {
@@ -80,8 +81,7 @@ backend.images = function (game, num, callback) {
             }
         });
     }
-
-    else if (game.accepted.length == 0) {
+    else if (game.accepted.length === 0) {
         unseen = Array.diff(config.images, game.seen);
         var images = util.nRandomElements(unseen, num);
         game.seen = game.seen.concat(images);
@@ -94,7 +94,6 @@ backend.images = function (game, num, callback) {
             }
         });
     }
-
     else {
         amalgamateTags(game.accepted, function (err, target) {
             var dots = {};
@@ -105,7 +104,7 @@ backend.images = function (game, num, callback) {
             .on('data', function (doc) {
                 dots[doc.image] = 0;
                 for (key in doc) {
-                    if (key != '_id' && key != '__v' && key != 'image') {
+                    if (key !== '_id' && key !== '__v' && key !== 'image') {
                         //dots[doc.image] += doc[key] * target[key];
                         dots[doc.image] += Math.pow(doc[key] * target[key], EXPONENT);
                     }
@@ -126,10 +125,9 @@ backend.images = function (game, num, callback) {
                         }
                     }
                 }
-                
                 game.seen = game.seen.concat(images);
                 game.save(function (err) {
-                    if (err){ 
+                    if (err){
                         callback(err);
                     }
                     else{
@@ -162,17 +160,18 @@ function sortObject(obj) {
 backend.dests = function (game, num, callback) {
     if (game.accepted.length == 0) {
         callback(undefined);
-    } 
+    }
     else {
         amalgamateTags(game.accepted, function (err, target) {
             var dots = {};
             var productDestImgMatrix = [];
+            /* .stream() is deprecated in mongoose v5.0.7 . use .cursor()*/
             db.DestTag.find().where('Hotels').gte(config.num_hotels).where('Reviews').gte(config.num_reviews)
-            .lean().stream()
+            .lean().cursor()
             .on('data', function (doc) {
                 dots[doc.dest] = 0;
                 for (key in doc) {
-                    if (key != '_id' && key != '__v' && key != 'dest' && key != 'Hotels' && key != 'Reviews') {
+                    if (key !== '_id' && key !== '__v' && key !== 'dest' && key !== 'Hotels' && key !== 'Reviews') {
                         dots[doc.dest] += doc[key] * target[key];
                         productDestImgMatrix.push({destName: doc.dest, tagName: key, destImgProduct: doc[key] * target[key]});
                         //key is tag name
@@ -187,29 +186,31 @@ backend.dests = function (game, num, callback) {
                 db.ImageLocations.find().lean()
                 .where('image').in(game.accepted)
                 .where('dest').ne('')
-                .stream()
+                /* .stream() is deprecated in mongoose v5.0.7 . use .cursor()*/
+                .cursor()
                 .on('data', function (doc) {
                     var imgTagTemp = {};
-                    //comment this line to disable actual match destinationa
+                    //comment this line to disable actual match destinations
                     //dests.push({ name: doc.dest, type: 'ACTUAL', displayTags: "N/A" });
                 })
                 .on('close', function () {
+
                     if (dests.length > 3) {
                         dests = Array.shuffle(dests).slice(0,3);
                     }
-                    
+
                     var ranks = rankList(dots);
                     //for (var i=0; i < 6 - dests.length; ++i) {
-                    for (var i=0; i < config.num_dests; ++i) {    
+                    for (var i=0; i < config.num_dests; ++i) {
                         var rankedTags = [];
                         for(var dame in productDestImgMatrix)
                             {
-                                if(ranks[i][0]== productDestImgMatrix[dame].destName) {
+                                if(ranks[i][0]=== productDestImgMatrix[dame].destName) {
                                     rankedTags[productDestImgMatrix[dame].tagName]=productDestImgMatrix[dame].destImgProduct;
                                 }
                             }
                         rankedTags= sortObject(rankedTags);
-                        rankedTags.reverse();                        
+                        rankedTags.reverse();
 
                         var tagCount = 0;
                         var tagsDisplayed = '';
@@ -232,27 +233,27 @@ backend.dests = function (game, num, callback) {
                         var url = 'http://en.wikivoyage.org/wiki/'
                         + dests[j].name.replace(/,.*/, '').replace(/ /g, '_');
                         dests[j].url = url;
-                        (function (dest) { 
+                        (function (dest) {
                             request(url, function (err, res, body) {
                                 $ = cheerio.load(body);
                                 var text = $('#mw-content-text > p');
-                                if(text && text != undefined)
+                                if(text && text !== undefined)
                                 {
                                 text = text.first().text().match( /[^\.!\?]+[\.!\?]+/g );
                                 }
                                 else {
                                 text = null;
                                 }
-                                dest.info = ' ';                                
-                                if (text && text!=null && text[0]) {
+                                dest.info = ' ';
+                                if (text && text!==null && text[0]) {
                                     var idx = 0;
                                     while ((text[idx]) && (dest.info.length + text[idx].length < 275)) {
                                         dest.info += (' ' + text[idx]);
                                         idx += 1;
                                     }
-                                    
+
                                 }
-                            
+
                             });
                         })(dests[j]);
                     }
@@ -262,11 +263,11 @@ backend.dests = function (game, num, callback) {
                     }, 1000);
                 })
                 .on('error', function(err){
-                                callback(err)
+                                callback(err);
                 });
             })
             .on('error', function(err) {
-                           callback(err)
+                           callback(err);
             });
         });
     }
